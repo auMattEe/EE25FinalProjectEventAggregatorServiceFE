@@ -16,6 +16,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: DashboardComponent,
   }, // Dashboard page route
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard' }, // Redirect to dashboard for any unknown routes
 ];
 
 // Create an Angular module for routing
