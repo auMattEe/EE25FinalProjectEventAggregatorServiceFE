@@ -1,0 +1,92 @@
+/* Styling for the wrapper */
+.wrapper {
+    background: #0072c6;
+    /* Blue color - Estonian flag color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Styling for the form container */
+form {
+    background: #fff;
+    /* White background */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Styling for the form title */
+h1 {
+    color: #0072c6;
+    /* Blue color - Estonian flag color */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for input boxes */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #ccc;
+}
+
+/* Styling for the Login button */
+.btn {
+    background: #0072c6;
+    /* Blue color - Estonian flag color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #005aa7;
+    /* Slightly darker blue on hover */
+}
+
+/* Styling for the register link */
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #0072c6;
+    /* Blue color - Estonian flag color */
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for error messages */
+.error-message {
+    color: #ff4f4f;
+    /* Red for error messages */
+    margin-top: 20px;
+    font-weight: 600;
+}

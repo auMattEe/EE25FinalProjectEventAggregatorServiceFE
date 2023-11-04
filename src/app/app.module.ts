@@ -7,10 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { EventComponent } from './event/event.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // Create an Angular module for your application
 @NgModule({
-
   // Declare the components that belong to this module
   declarations: [
     AppComponent,
@@ -24,11 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule, // For running the app in a web browser
     AppRoutingModule, // For routing configuration
     HttpClientModule, // For making HTTP requests
+    FormsModule,
   ],
 
   // Providers (services) can be added here if needed
   providers: [],
-  
+
   // Define the root component of your application
   bootstrap: [AppComponent],
 })
