@@ -9,8 +9,19 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   private baseUrl = environment.apiBaseURL;
   public isAuthenticated: boolean = false; // Manages the user's authentication status in the service.
+  private userId!: string; // Add the definite assignment assertion
 
   constructor(private http: HttpClient) {}
+
+  // Set the user ID when the user logs in
+  setUserId(userId: string) {
+    this.userId = userId;
+  }
+
+  // Get the user ID
+  getUserId(): string {
+    return this.userId;
+  }
 
   // A function to handle both login and registration based on the provided endpoint.
   auth(username: string, password: string, endpoint: string): Observable<any> {
@@ -40,11 +51,11 @@ export class AuthService {
 
   // A function to log the user in using the provided HttpClient.
   login(username: string, password: string): Observable<any> {
-    return this.auth(username, password, 'login');
+    return this.auth(username, password, '/events/login');
   }
 
   // A function to register a user using the provided HttpClient.
   register(user: any): Observable<any> {
-    return this.auth(user.username, user.password, 'register');
+    return this.http.post(`${this.baseUrl}/events/register`, user);
   }
 }

@@ -8,7 +8,6 @@ import { AuthService } from '../../Service/auth.service';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent {
-
   // Initialize variables to store user registration data and error message
   username: string = '';
   password: string = '';
@@ -22,7 +21,6 @@ export class RegistrationComponent {
 
   // Method to handle user registration
   onRegister() {
-
     // Create a user object with the registration data
     const user = {
       username: this.username,
@@ -34,24 +32,21 @@ export class RegistrationComponent {
 
     // Use an observer object for the subscription
     this.authService.register(user).subscribe({
-      next: (result: { success: boolean }) => {
-
-        // Check the result from your authentication service.
-        if (result.success) {
-
-          // Registration successful, navigate to the login page.
+      next: (result: string) => {
+        // This part is called when the HTTP request is successful
+        if (result === 'Registration successful') {
+          // If the result is "Registration successful," it means the registration was successful and navigate the user to the login page.
           this.router.navigate(['/login']);
         } else {
-
-          // Registration failed, display an error message to the user.
+          // If the result is not "Registration successful," there was an issue with registration. Set an error message to inform the user.
           this.errorMessage =
             'Registration failed. Please check your information.';
         }
       },
       error: (error: any) => {
-        
-        // Handle network or other errors
+        // This part is called when there is an error in the HTTP request
         console.error('Registration failed: ', error);
+        // Log the error to the console for debugging purposes. Set an error message to inform the user that there was an issue with registration.
         this.errorMessage = 'Registration failed. Please try again later.';
       },
     });

@@ -1,4 +1,3 @@
-// Import necessary modules and components from Angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,18 +24,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
   // Import external modules that your application relies on
   imports: [
-    BrowserModule, // For running the app in a web browser
-    AppRoutingModule, // For routing configuration
-    HttpClientModule, // For making HTTP requests
+    BrowserModule, 
+    AppRoutingModule, 
+    HttpClientModule, 
     FormsModule,
     MatCardModule,
     BrowserAnimationsModule,
   ],
 
-  // Providers (services) can be added here if needed
+  // Providers (services) can be added if needed
   providers: [],
 
-  // Define the root component of your application
+  // Define the root component of the application
   bootstrap: [AppComponent],
 })
 export class AppModule {}
