@@ -8,28 +8,39 @@ import { AuthService } from '../../Service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+
+  // Initialize variables for the username, password, and error message
   username: string = '';
   password: string = '';
   errorMessage: string = '';
 
+  // Constructor to inject Router and AuthService
   constructor(private router: Router, private authService: AuthService) {}
 
+  // Function triggered when the login form is submitted
   onLogin() {
-    // Call the login method from the AuthService
+
+    // Call the login method from the AuthService and subscribe to its response
     this.authService.login(this.username, this.password).subscribe({
       next: (result: { success: boolean }) => {
+
         // Check the result from your authentication service.
         if (result.success) {
-          // Login successful, navigate to the dashboard.
+
+          // If login is successful, navigate to the dashboard page.
           this.router.navigate(['/dashboard']);
         } else {
-          // Authentication failed, display an error message to the user.
+
+          // If authentication failed, display an error message to the user.
           this.errorMessage = 'Login failed. Please check your credentials.';
         }
       },
       error: (error: any) => {
-        // Handle errors
+
+        // Handle errors and log them to the console
         console.error('Login failed: ', error);
+        
+        // Set an error message for the user
         this.errorMessage = 'Login failed. Please try again later.';
       },
     });

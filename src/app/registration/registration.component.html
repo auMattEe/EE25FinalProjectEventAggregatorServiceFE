@@ -1,30 +1,59 @@
 <div class="wrapper">
+
+    <!-- Registration form with ngSubmit event binding -->
     <form (ngSubmit)="onRegister()">
+
+        <!-- Registration form title -->
         <h1>Register</h1>
+
+        <!-- Input box for username -->
         <div class="input-box">
             <input type="text" placeholder="Username" required [(ngModel)]="username" name="username">
+
+            <!-- Icon for username input -->
             <i class='bx bxs-user'></i>
         </div>
+
+        <!-- Input box for password -->
         <div class="input-box">
             <input type="password" placeholder="Password" required [(ngModel)]="password" name="password">
+
+            <!-- Icon for password input -->
             <i class='bx bxs-lock-alt'></i>
         </div>
+
+        <!-- Input box for first name -->
         <div class="input-box">
             <input type="text" placeholder="First Name" required [(ngModel)]="firstName" name="firstName">
+
+            <!-- Icon for first name input -->
             <i class='bx bxs-user'></i>
         </div>
+
+        <!-- Input box for last name -->
         <div class="input-box">
             <input type="text" placeholder="Last Name" required [(ngModel)]="lastName" name="lastName">
+
+            <!-- Icon for last name input -->
             <i class='bx bxs-user'></i>
         </div>
+
+        <!-- Input box for email -->
         <div class="input-box">
             <input type="email" placeholder="Email" required [(ngModel)]="email" name="email">
+            
+            <!-- Icon for email input -->
             <i class='bx bxs-envelope'></i>
         </div>
+
+        <!-- Register button -->
         <button type="submit" class="btn">Register</button>
+
+        <!-- Link to the login page if the user already has an account -->
         <div class="login-link">
             <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
         </div>
+
         <!-- Display an error message if registration fails -->
         <div *ngIf="errorMessage" class="error-message">
             {{ errorMessage }}
