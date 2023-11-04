@@ -1,0 +1,59 @@
+<!-- Check if 'events' exists and has more than 0 items -->
+<div *ngIf="events && events.length > 0">
+
+    <!-- Display a title for the section -->
+    <h1>Events</h1>
+
+    <!-- Create a table with the 'table' and 'table-striped' classes -->
+    <table class="table table-striped">
+
+        <!-- Define the table header section -->
+        <thead>
+
+            <!-- Create a row for table headers -->
+            <tr>
+
+                <!-- Define table column headers -->
+                <th>ID</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Duration</th>
+                <th>Address</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+
+        <!-- Define the table body section -->
+        <tbody>
+
+            <!-- Use ngFor to loop through 'events' and display data for each event -->
+            <tr *ngFor="let event of events">
+
+                <!-- Display event ID -->
+                <td>{{ event.id }}</td>
+
+                <!-- Display event name -->
+                <td>{{ event.name }}</td>
+
+                <!-- Display event start date with date formatting -->
+                <td>{{ event.eventStart | date }}</td>
+
+                <!-- Display event duration followed by 'hours' -->
+                <td>{{ event.eventDuration }} hours</td>
+
+                <!-- Display event address -->
+                <td>{{ event.address }}</td>
+
+                <!-- Display event description -->
+                <td>{{ event.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Check if 'events' is not available or if its length is 0 -->
+<div *ngIf="!events || events.length === 0">
+    
+    <!-- Display a message when no events are available -->
+    <p>No events available.</p>
+</div>
