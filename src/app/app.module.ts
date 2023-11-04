@@ -8,6 +8,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { EventComponent } from './event/event.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Create an Angular module for your application
 @NgModule({
@@ -17,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegistrationComponent,
     EventComponent,
+    DashboardComponent,
   ],
 
   // Import external modules that your application relies on
@@ -25,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule, // For routing configuration
     HttpClientModule, // For making HTTP requests
     FormsModule,
+    MatCardModule,
+    BrowserAnimationsModule,
   ],
 
   // Providers (services) can be added here if needed

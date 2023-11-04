@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/Service/eventService';
-import { Event } from 'src/Models/event';
+import { EventService } from 'src/Service/event.service';
+import { Event } from 'src/Models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -14,11 +14,11 @@ export class EventComponent implements OnInit {
   // Define a public variable to store the list of events
   public events: Event[] | undefined;
 
-  // Constructor for the EventComponent
-  constructor(private eventService: EventService) {}
-
   // Define a title for the component
   title = 'eventmanagerapp';
+
+  // Constructor for the EventComponent
+  constructor(private eventService: EventService) {}
 
   // Initialize the component when it is created
   ngOnInit() {

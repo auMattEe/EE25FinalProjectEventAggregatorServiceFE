@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Service/auth.service';
+import { LoginService } from '../../Service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,13 @@ export class LoginComponent {
   errorMessage: string = '';
 
   // Constructor to inject Router and AuthService
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private loginService: LoginService) {}
 
   // Function triggered when the login form is submitted
   onLogin() {
 
     // Call the login method from the AuthService and subscribe to its response
-    this.authService.login(this.username, this.password).subscribe({
+    this.loginService.login(this.username, this.password).subscribe({
       next: (result: { success: boolean }) => {
 
         // Check the result from your authentication service.
