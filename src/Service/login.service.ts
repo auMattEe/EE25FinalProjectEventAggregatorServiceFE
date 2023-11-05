@@ -1,32 +1,35 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { environment } from '../environments/environment';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   private baseUrl = environment.apiBaseURL;
-  constructor(private http: HttpClient) {}
-  login(username: string, password: string): Observable<any> {
-    // Implement the logic to send a POST request to the Spring Boot API for login.
-    const loginData = { username, password };
-    return this.http.post(`${this.baseUrl}/events/login`, loginData)
-      .pipe(
-        tap((response) => {
-          console.log('Login Response:', response);
-        }),
-        catchError((error) => {
-          console.error('Login Error:', error);
-          throw error; // Re-throw the error to propagate it further
-        })
-      );
-  }
 
-  register(user: any) {
-    // Implement the logic to send a POST request to the Spring Boot API for registration.
-    return this.http.post<any>('/events/register', user);
+  constructor(private http: HttpClient, private authService: AuthService) {}
+
+  login(username: string, password: string): Observable<any> {
+    const loginData = { username, password };
+
+    return this.http.post(`${this.baseUrl}/events/login`, loginData).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Login Request Error:', error);
+        return throwError(error);
+      }),
+      tap((response: any) => {
+        if (response && response.token) {
+          console.log('Login Successful:', response);
+          this.authService.setToken(response.token);
+        } else {
+          console.error('Login failed: Invalid response', response);
+          throw new Error('Login failed: Invalid response');
+        }
+      })
+    );
   }
 }

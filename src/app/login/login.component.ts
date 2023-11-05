@@ -23,8 +23,19 @@ export class LoginComponent {
 
   // Function triggered when the login form is submitted
   onLogin() {
-    // Call the login method from the AuthService and subscribe to its response
-    this.loginService.login(this.username, this.password).subscribe({
+    // Get the username and password from form inputs
+    const username = this.username;
+    const password = this.password;
+
+    // Check the form inputs
+    console.log(username, password); // Used for log in troubleshooting
+
+    // Create the loginData object with the username and password
+    const loginData = { username, password };
+    console.log('loginData', loginData); // Used for log in troubleshooting
+
+    // Call the login method from the LoginService and subscribe to its response
+    this.loginService.login(username, password).subscribe({
       next: (result: { success: boolean; user: any }) => {
         // Check the result from your authentication service.
         if (result.success) {
