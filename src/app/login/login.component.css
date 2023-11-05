@@ -1,7 +1,6 @@
 /* Styling for the wrapper */
 .wrapper {
     background: #0072c6;
-    /* Blue color - Estonian flag color */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +10,6 @@
 /* Styling for the form container */
 form {
     background: #fff;
-    /* White background */
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
