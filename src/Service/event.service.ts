@@ -32,4 +32,8 @@ export class EventService {
       `${this.apiServerUrl}/events/attending/${userId}`
     );
   }
+
+  public createEvent(eventData: any) {
+    return this.http.post(`${this.apiServerUrl}/events`, eventData);
+  }
 }

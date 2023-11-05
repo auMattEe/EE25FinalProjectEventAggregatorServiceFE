@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { AuthService } from '../../Service/auth.service';
 
 @Component({
@@ -30,25 +31,18 @@ export class RegistrationComponent {
       email: this.email,
     };
 
-    // Use an observer object for the subscription
-    this.authService.register(user).subscribe({
-      next: (result: string) => {
-        // This part is called when the HTTP request is successful
-        if (result === 'Registration successful') {
-          // If the result is "Registration successful," it means the registration was successful and navigate the user to the login page.
-          this.router.navigate(['/login']);
-        } else {
-          // If the result is not "Registration successful," there was an issue with registration. Set an error message to inform the user.
-          this.errorMessage =
-            'Registration failed. Please check your information.';
-        }
-      },
-      error: (error: any) => {
-        // This part is called when there is an error in the HTTP request
-        console.error('Registration failed: ', error);
-        // Log the error to the console for debugging purposes. Set an error message to inform the user that there was an issue with registration.
-        this.errorMessage = 'Registration failed. Please try again later.';
-      },
-    });
+    // Use an observer object for the subscription with tap operator
+    this.authService
+      .register(user)
+      .pipe(
+        tap((result: string) => {
+          if (result === 'Registration successful') {
+            this.router.navigate(['/login']);
+          } else {
+            this.errorMessage = 'Registration failed';
+          }
+        })
+      )
+      .subscribe();
   }
 }

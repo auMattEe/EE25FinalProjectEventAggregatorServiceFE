@@ -5,12 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../Guards/auth.guard';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 // Routes for the application
 const routes: Routes = [
   { path: 'events', component: EventComponent }, // Events page route
   { path: 'login', component: LoginComponent }, // Login page route
   { path: 'register', component: RegistrationComponent }, // Registration page route
+  { path: 'create', component: CreateEventComponent },
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
