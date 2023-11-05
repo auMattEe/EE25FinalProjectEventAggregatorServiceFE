@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../Service/event.service';
+import { Router } from '@angular/router';
 import { Event } from '../../Models/event.model';
 import { AuthService } from '../../Service/auth.service';
-import { Router } from '@angular/router';
+import { EventService } from '../../Service/event.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/Service/event.service';
-import { Event } from 'src/Models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Event } from 'src/Models/event.model';
+import { EventService } from 'src/Service/event.service';
 
 @Component({
   selector: 'app-event',

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../Guards/auth.guard';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventComponent } from './event/event.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuard } from '../Guards/auth.guard';
-import { CreateEventComponent } from './create-event/create-event.component';
 
 // Routes for the application
 const routes: Routes = [
