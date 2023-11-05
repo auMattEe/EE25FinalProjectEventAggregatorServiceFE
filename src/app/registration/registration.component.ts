@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
 import { AuthService } from '../../Service/auth.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class RegistrationComponent {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
-  errorMessage: string = '';
+  message: string = '';
 
   // Constructor to inject dependencies (Router and AuthService)
   constructor(private router: Router, private authService: AuthService) {}
@@ -31,18 +30,21 @@ export class RegistrationComponent {
       email: this.email,
     };
 
-    // Use an observer object for the subscription with tap operator
-    this.authService
-      .register(user)
-      .pipe(
-        tap((result: string) => {
-          if (result === 'Registration successful') {
+    // Use an observer object for the subscription
+    this.authService.register(user).subscribe({
+      next: (response: any) => {
+        this.message = response.message;
+        if (response.success) {
+          // Registration was successful, navigate to login page after a short delay
+          setTimeout(() => {
             this.router.navigate(['/login']);
-          } else {
-            this.errorMessage = 'Registration failed';
-          }
-        })
-      )
-      .subscribe();
+          }, 1000); // 1-second delay
+        }
+      },
+      error: (error) => {
+        console.error('Registration failed:', error);
+        this.message = 'Registration failed. Please try again later.';
+      },
+    });
   }
 }
