@@ -5,16 +5,16 @@
         <h1>Login</h1>
 
         <!-- Input box for the username -->
-        <div class="input-box">
-            <input type="text" placeholder="Username" required [(ngModel)]="username" name="username">
-            <i class='bx bxs-user'></i> <!-- Icon for username -->
-        </div>
+<div class="input-box">
+    <input [(ngModel)]="username" name="username" type="text" placeholder="Username">
+    <i class='bx bxs-user'></i> <!-- Icon for username -->
+</div>
 
-        <!-- Input box for the password -->
-        <div class="input-box">
-            <input type="password" placeholder="Password" required [(ngModel)]="password" name="password">
-            <i class='bx bxs-lock-alt'></i> <!-- Icon for password -->
-        </div>
+<!-- Input box for the password -->
+<div class="input-box">
+    <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
+    <i class='bx bxs-lock-alt'></i> <!-- Icon for password -->
+</div>
 
         <!--
         Remember Me and Forgot Password options disabled for now. Will activate once everything else is completed.
