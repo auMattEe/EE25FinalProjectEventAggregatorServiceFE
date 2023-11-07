@@ -36,11 +36,11 @@ export class LoginComponent {
 
     // Call the login method from the LoginService and subscribe to its response
     this.loginService.login(username, password).subscribe({
-      next: (result: { success: boolean; user: any }) => {
-        // Check the result from your authentication service.
-        if (result.success) {
+      next: (result: { id: number; username: string }) => {
+        // assuming that a successful login will always return a username
+        if (result.username) {
           // If login is successful, set the user ID in AuthService and navigate to the dashboard page.
-          this.authService.setUserId(result.user.id); // Assuming the user object returned has an 'id' property
+          this.authService.setUserId(result.id);
           this.router.navigate(['/dashboard']);
         } else {
           // If authentication failed, display an error message to the user.
@@ -51,14 +51,11 @@ export class LoginComponent {
         console.error('Login failed: ', error);
 
         if (error.status === 401) {
-          // 401 Unauthorized status code: Invalid credentials
           this.errorMessage = 'Invalid username or password.';
         } else if (error.status === 0) {
-          // 0 status code: Network error
           this.errorMessage =
             'Network error. Please check your internet connection.';
         } else {
-          // Other errors
           this.errorMessage = 'Login failed. Please try again later.';
         }
       },

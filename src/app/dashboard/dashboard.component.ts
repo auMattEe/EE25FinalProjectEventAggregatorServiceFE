@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // Check if the user is authenticated
     if (this.authService.isLoggedIn()) {
-      const userId = this.authService.getUserId();
+      const userId = this.authService.getUserId().toString(); // Convert to string
 
       this.eventService
         .getCreatedEvents(userId)

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   private baseUrl = environment.apiBaseURL;
   private token: string = '';
-  private userId!: string;
+  private userId!: number;
   public isAuthenticated: boolean = false;
 
   constructor(private http: HttpClient) {}
@@ -22,11 +22,11 @@ export class AuthService {
     return this.token;
   }
 
-  setUserId(userId: string) {
+  setUserId(userId: number = 0): void {
     this.userId = userId;
   }
 
-  getUserId(): string {
+  getUserId(): number {
     return this.userId;
   }
 
