@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'create', component: CreateEventComponent },
   {
     path: 'dashboard',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: DashboardComponent,
   }, // Dashboard page route
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
