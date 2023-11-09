@@ -1,3 +1,7 @@
+/* 
+The DashboardComponent class is responsible for fetching and storing created and attending events for a user. 
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from '../../Models/event.model';
@@ -13,23 +17,19 @@ export class DashboardComponent implements OnInit {
   createdEvents: Event[] = [];
   attendingEvents: Event[] = [];
 
-  constructor(
-    private eventService: EventService,
-    private router: Router
-  ) {}
+  constructor(private eventService: EventService, private router: Router) {}
+
+  /*
+The ngOnInit method fetches the created and attending events for a user using the getCreatedEvents and getAttendingEvents methods of the EventService class.
+*/
 
   ngOnInit(): void {
-    // You can directly fetch the events without authentication
-    this.eventService
-      .getCreatedEvents('')
-      .subscribe((events: Event[]) => {
-        this.createdEvents = events;
-      });
+    this.eventService.getCreatedEvents('').subscribe((events: Event[]) => {
+      this.createdEvents = events;
+    });
 
-    this.eventService
-      .getAttendingEvents('')
-      .subscribe((events: Event[]) => {
-        this.attendingEvents = events;
-      });
+    this.eventService.getAttendingEvents('').subscribe((events: Event[]) => {
+      this.attendingEvents = events;
+    });
   }
 }

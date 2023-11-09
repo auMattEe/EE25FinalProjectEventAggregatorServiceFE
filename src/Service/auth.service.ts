@@ -1,3 +1,7 @@
+/* 
+The AuthService class is responsible for handling authentication and authorization functionality. This has been disabled due to time constraints and troubleshooting.
+*/
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../Guards/auth.guard';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventComponent } from './event/event.component';
@@ -9,25 +8,22 @@ import { RegistrationComponent } from './registration/registration.component';
 
 // Routes for the application
 const routes: Routes = [
-  { path: 'events', component: EventComponent }, // Events page route
-  { path: 'login', component: LoginComponent }, // Login page route
-  { path: 'register', component: RegistrationComponent }, // Registration page route
+  { path: 'events', component: EventComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'create', component: CreateEventComponent },
   {
     path: 'dashboard',
-    // canActivate: [AuthGuard],
+    // canActivate: [AuthGuard], -- Disabled due to time constraints and troubleshooting.
     component: DashboardComponent,
-  }, // Dashboard page route
+  },
+  // Redirect to dashboard for any unknown routes
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '/dashboard' }, // Redirect to dashboard for any unknown routes
+  { path: '**', redirectTo: '/dashboard' },
 ];
 
-// Create an Angular module for routing
 @NgModule({
-  // Import the configured routes into the module
   imports: [RouterModule.forRoot(routes)],
-
-  // Export the configured RouterModule for use in other parts of the application
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

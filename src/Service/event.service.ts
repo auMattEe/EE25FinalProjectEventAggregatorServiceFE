@@ -1,3 +1,7 @@
+/* 
+The EventService class is responsible for making HTTP requests to fetch and creating events. 
+*/
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,27 +16,37 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
 
-  // Define a method to get all events
+  /* 
+The getEvent method is responsible for making an GET request to fetch all events. It returns an array of Event objects. 
+*/
+
   public getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.apiServerUrl}/events/all`);
   }
 
-  // Define a method to get created events for a user
+  /*
+The getCreatedEvents method makes a GET request to fetch created events for a specific user.
+*/
+
   public getCreatedEvents(userId: string): Observable<Event[]> {
-    // Make an HTTP GET request to fetch created events for the user
     return this.http.get<Event[]>(
       `${this.apiServerUrl}/events/created/${userId}`
     );
   }
 
-  // Define a method to get attending events for a user
+  /*
+The function getAttendingEvents method makes a GET request to fetch attending events for a user.
+*/
+
   public getAttendingEvents(userId: string): Observable<Event[]> {
-    // Make an HTTP GET request to fetch attending events for the user
     return this.http.get<Event[]>(
       `${this.apiServerUrl}/events/attending/${userId}`
     );
   }
 
+  /*
+The createEvent method sends a POST request to the server with the provided event data for creating a new event. 
+*/
   public createEvent(eventData: any) {
     return this.http.post(`${this.apiServerUrl}/events`, eventData);
   }

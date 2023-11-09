@@ -1,3 +1,7 @@
+/* 
+The RegistrationComponent is responsible for handling user registration by sending the registration data to the server and navigating to the login page upon successful registration. 
+*/
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Service/auth.service';
@@ -7,8 +11,9 @@ import { AuthService } from '../../Service/auth.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
 })
+
+// Initialize variables to store user registration data and error message
 export class RegistrationComponent {
-  // Initialize variables to store user registration data and error message
   username: string = '';
   password: string = '';
   firstName: string = '';
@@ -16,10 +21,13 @@ export class RegistrationComponent {
   email: string = '';
   message: string = '';
 
-  // Constructor to inject dependencies (Router and AuthService)
   constructor(private router: Router, private authService: AuthService) {}
 
-  // Method to handle user registration
+  /* 
+The onRegister method is responsible for handling the user registration process. It creates a user object using the registration data entered by the user. This user object is then passed to the register method of the
+authService (currently disabled due to time constraints and troubleshooting) to send the registration data to the server for storing. 
+*/
+
   onRegister() {
     // Create a user object with the registration data
     const user = {
@@ -30,7 +38,10 @@ export class RegistrationComponent {
       email: this.email,
     };
 
-    // Use an observer object for the subscription
+    /* 
+    Use an observer object for the subscription to the register method of the authService and wait for the response.
+    */
+
     this.authService.register(user).subscribe({
       next: (response: any) => {
         this.message = response.message;

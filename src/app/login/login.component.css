@@ -59,9 +59,9 @@ h1 {
     transition: background 0.3s;
 }
 
+/* Slightly darker blue on hover */
 .btn:hover {
     background: #005aa7;
-    /* Slightly darker blue on hover */
 }
 
 /* Styling for the register link */
@@ -81,7 +81,6 @@ h1 {
 /* Styling for error messages */
 .error-message {
     color: #ff4f4f;
-    /* Red for error messages */
     margin-top: 20px;
     font-weight: 600;
 }

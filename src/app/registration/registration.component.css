@@ -60,9 +60,9 @@ h1 {
     transition: background 0.3s;
 }
 
+/* Slightly darker blue on hover */
 .btn:hover {
     background: #005aa7;
-    /* Slightly darker blue on hover */
 }
 
 /* Styling for the login link */
@@ -75,6 +75,7 @@ h1 {
     text-decoration: none;
 }
 
+/* Styling for the login link underline on hover */
 .login-link a:hover {
     text-decoration: underline;
 }
@@ -82,7 +83,6 @@ h1 {
 /* Styling for error messages */
 .error-message {
     color: #ff4f4f;
-    /* Red for error messages */
     margin-top: 20px;
     font-weight: 600;
 }
