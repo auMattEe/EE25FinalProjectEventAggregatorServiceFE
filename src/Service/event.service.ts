@@ -29,9 +29,8 @@ The getCreatedEvents method makes a GET request to fetch created events for a sp
 */
 
   public getCreatedEvents(userId: number): Observable<Event[]> {
-    return this.http.get<Event[]>(
-      `${this.apiServerUrl}/events/created/${userId}`
-    );
+    const url = `${this.apiServerUrl}/events/created/${userId}`;
+    return this.http.get<Event[]>(url);
   }
 
   /*

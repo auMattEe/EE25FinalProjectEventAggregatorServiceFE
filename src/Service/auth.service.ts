@@ -42,8 +42,8 @@ export class AuthService {
   }
 
   // Set isAuthenticated to true if the user is authenticated
-  setAuthenticated() {
-    this.isAuthenticated = true;
+  setAuthenticated(isAuthenticated: boolean = true) {
+    this.isAuthenticated = isAuthenticated;
   }
 
   // Check if the user is authenticated

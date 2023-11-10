@@ -31,7 +31,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.input-box input {
+.input-box input, .input-box textarea {
     width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -47,7 +47,15 @@ h1 {
     color: #ccc;
 }
 
-/* Styling for the Register button */
+/* Styling for the buttons container */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+    margin-top: 20px;
+}
+
+/* Styling for the buttons */
 .btn {
     background: #0072c6;
     color: #fff;
@@ -57,11 +65,12 @@ h1 {
     cursor: pointer;
     font-weight: 600;
     transition: background 0.3s;
+    margin: 5px; /* Add a small gap between buttons */
 }
 
+/* Slightly darker blue on hover */
 .btn:hover {
     background: #005aa7;
-    /* Slightly darker blue on hover */
 }
 
 /* Styling for the login link */
@@ -81,7 +90,6 @@ h1 {
 /* Styling for error messages */
 .error-message {
     color: #ff4f4f;
-    /* Red for error messages */
     margin-top: 20px;
     font-weight: 600;
 }

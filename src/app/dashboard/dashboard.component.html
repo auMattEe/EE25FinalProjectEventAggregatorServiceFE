@@ -2,7 +2,7 @@
     <h2>Your Dashboard</h2>
 
     <!-- Check if createdEvents is available -->
-    <ng-container *ngIf="createdEvents && createdEvents.length > 0; else noEvents">
+    <ng-container *ngIf="createdEvents && createdEvents.length > 0; else noCreatedEvents">
         <mat-card>
             <mat-card-title>Events Created by You</mat-card-title>
             <mat-card-content>
@@ -14,7 +14,7 @@
     </ng-container>
 
     <!-- Check if attendingEvents is available -->
-    <ng-container *ngIf="attendingEvents && attendingEvents.length > 0; else noEvents">
+    <ng-container *ngIf="attendingEvents && attendingEvents.length > 0; else noAttendingEvents">
         <mat-card>
             <mat-card-title>Events You Are Attending</mat-card-title>
             <mat-card-content>
@@ -25,9 +25,14 @@
         </mat-card>
     </ng-container>
 
-    <!-- No events message if no events are available -->
-    <ng-template #noEvents>
-        <p>No events to display.</p>
+    <!-- No created events message if no events are available -->
+    <ng-template #noCreatedEvents>
+        <p>No created events to display.</p>
+    </ng-template>
+
+    <!-- No attending events message if no events are available -->
+    <ng-template #noAttendingEvents>
+        <p>No attending events to display.</p>
     </ng-template>
 
     <button mat-raised-button routerLink="/create">Create Event</button>

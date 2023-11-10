@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { EventService } from '../../Service/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -20,7 +21,7 @@ export class CreateEventComponent {
   description: string = '';
   errorMessage: string = '';
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   onSubmit() {
     const eventData = {
@@ -45,5 +46,9 @@ export class CreateEventComponent {
         })
       )
       .subscribe();
+  }
+  
+  onCancel() {
+    this.router.navigate(['/dashboard']);
   }
 }

@@ -29,26 +29,30 @@ The ngOnInit method fetches the created and attending events for a user using th
 */
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn()) {
-      const userId = this.authService.getUserId();
-
-      this.eventService
-        .getCreatedEvents(userId)
-        .subscribe((events: Event[]) => {
-          this.createdEvents = events;
-        });
-
-      this.eventService
-        .getAttendingEvents(userId)
-        .subscribe((events: Event[]) => {
-          this.attendingEvents = events;
-        });
-    } else {
-      // Handle the case where the user is not logged in
+    if (!this.authService.isLoggedIn()) {
       console.error('User is not logged in.');
-
-      // Redirect to the login page
       this.router.navigate(['/login']);
+      return;
     }
+
+    const userId = this.authService.getUserId();
+
+    this.eventService.getCreatedEvents(userId).subscribe(
+      (events: Event[]) => {
+        this.createdEvents = events;
+      },
+      (error: any) => {
+        console.error('Failed to fetch created events:', error);
+      }
+    );
+
+    this.eventService.getAttendingEvents(userId).subscribe(
+      (events: Event[]) => {
+        this.attendingEvents = events;
+      },
+      (error: any) => {
+        console.error('Failed to fetch attending events:', error);
+      }
+    );
   }
 }

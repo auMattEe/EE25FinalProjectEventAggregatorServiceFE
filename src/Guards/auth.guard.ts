@@ -3,13 +3,13 @@ The AuthGuard class is a service that checks if a user is authenticated and allo
 */
 
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../Service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard {
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   /* 

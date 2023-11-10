@@ -21,7 +21,10 @@
             <textarea placeholder="Event Description" required [(ngModel)]="description" name="eventDescription"></textarea>
             <i class='bx bxs-file'></i>
         </div>
-        <button type="submit" class="btn">Submit</button>
+        <div class="button-container">
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn" (click)="onCancel()" style="margin-left: 10px;">Cancel</button>
+        </div>
         <div *ngIf="errorMessage" class="error-message">
             {{ errorMessage }}
         </div>
