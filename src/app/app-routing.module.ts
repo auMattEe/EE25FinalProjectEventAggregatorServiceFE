@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventComponent } from './event/event.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AuthGuard } from '../Guards/auth.guard';
 
 // Routes for the application
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'create', component: CreateEventComponent },
   {
     path: 'dashboard',
-    // canActivate: [AuthGuard], -- Disabled due to time constraints and troubleshooting.
+    canActivate: [AuthGuard],
     component: DashboardComponent,
   },
   // Redirect to dashboard for any unknown routes

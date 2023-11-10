@@ -2,23 +2,23 @@
     <form (ngSubmit)="onSubmit()">
         <h1>Create Event</h1>
         <div class="input-box">
-            <input type="text" placeholder="Event Name" required [(ngModel)]="eventName" name="eventName">
+            <input type="text" placeholder="Event Name" required [(ngModel)]="name" name="eventName">
             <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
-            <input type="datetime-local" placeholder="Event Start Date" required [(ngModel)]="eventStartDate" name="eventStartDate">
+            <input type="text" placeholder="Event Start Date" required [(ngModel)]="eventStart" name="eventStartDate">
             <i class='bx bxs-calendar'></i>
         </div>
         <div class="input-box">
-            <input type="number" placeholder="Event Duration (hours)" required [(ngModel)]="eventDuration" name="eventDuration">
+            <input type="text" placeholder="Event Duration (hours)" required [(ngModel)]="eventDuration" name="eventDuration">
             <i class='bx bxs-time'></i>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Event Address" required [(ngModel)]="eventAddress" name="eventAddress">
+            <input type="text" placeholder="Event Address" required [(ngModel)]="address" name="eventAddress">
             <i class='bx bxs-map'></i>
         </div>
         <div class="input-box">
-            <textarea placeholder="Event Description" required [(ngModel)]="eventDescription" name="eventDescription"></textarea>
+            <textarea placeholder="Event Description" required [(ngModel)]="description" name="eventDescription"></textarea>
             <i class='bx bxs-file'></i>
         </div>
         <button type="submit" class="btn">Submit</button>

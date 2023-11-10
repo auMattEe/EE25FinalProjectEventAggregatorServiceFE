@@ -1,5 +1,5 @@
 /* 
-The AuthService class is responsible for handling authentication and authorization functionality. This has been disabled due to time constraints and troubleshooting.
+The AuthService class is responsible for handling authentication and authorization functionality. This is only partially implemented due to time constraints and troubleshooting.
 */
 
 import { HttpClient } from '@angular/common/http';
@@ -26,10 +26,12 @@ export class AuthService {
     return this.token;
   }
 
+  // Set the user ID when the user logs in
   setUserId(userId: number = 0): void {
     this.userId = userId;
   }
 
+  // Get the user ID
   getUserId(): number {
     return this.userId;
   }
@@ -39,26 +41,32 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/${endpoint}`, userData);
   }
 
+  // Set isAuthenticated to true if the user is authenticated
   setAuthenticated() {
     this.isAuthenticated = true;
   }
 
+  // Check if the user is authenticated
   getIsAuthenticated(): boolean {
     return this.isAuthenticated;
   }
 
+  // A function to check if the user is logged in. This is essentially a duplicate of the above and should be consolidated into a single function. Will be implemented if time permits.
   isLoggedIn(): boolean {
     return this.isAuthenticated;
   }
 
+  // Logout not yet implemented.
   logout(): void {
     this.isAuthenticated = false;
   }
 
+  // A function to log the user in
   login(username: string, password: string): Observable<any> {
-    return this.auth(username, password, 'login');
+    return this.auth(username, password, '/events/login');
   }
 
+  // A function to register a user
   register(user: any): Observable<any> {
     const userData = {
       username: user.username,

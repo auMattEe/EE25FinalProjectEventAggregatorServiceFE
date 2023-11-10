@@ -21,9 +21,8 @@ export class LoginService {
 The login function takes a username and password, sends a POST request to the server with the login data, and returns an Observable that returns the server response.
 */
 
-  login(username: string, password: string): Observable<any> {
-    const loginData = { username, password };
-
+  login(loginData: { username: string; password: string}): Observable<any> {
+    
     return this.http.post(`${this.baseUrl}/events/login`, loginData).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Login Request Error:', error);

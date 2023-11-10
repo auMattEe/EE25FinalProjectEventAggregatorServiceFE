@@ -13,22 +13,22 @@ import { EventService } from '../../Service/event.service';
   styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent {
-  eventName: string = '';
-  eventStartDate: string = '';
-  eventDuration: number | null = null;
-  eventAddress: string = '';
-  eventDescription: string = '';
+  name: string = '';
+  eventStart: string = '';
+  eventDuration: string = '';
+  address: string = '';
+  description: string = '';
   errorMessage: string = '';
 
   constructor(private eventService: EventService) {}
 
   onSubmit() {
     const eventData = {
-      name: this.eventName,
-      eventStart: new Date(this.eventStartDate),
+      name: this.name,
+      eventStart: this.eventStart,
       eventDuration: this.eventDuration,
-      address: this.eventAddress,
-      description: this.eventDescription,
+      address: this.address,
+      description: this.description,
     };
 
     // Handle form submission and send the data to the backend for event creation.
