@@ -60,6 +60,13 @@ export class AuthService {
   }
 
   register(user: any): Observable<any> {
-    return this.auth(user.username, user.password, 'register');
+    const userData = {
+      username: user.username,
+      password: user.password,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+    };
+    return this.http.post(`${this.baseUrl}/events/register`, userData);
   }
 }
