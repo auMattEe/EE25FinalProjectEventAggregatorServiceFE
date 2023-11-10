@@ -55,8 +55,13 @@
         </div>
 
         <!-- Display an error message if registration fails -->
-        <div *ngIf="message" class="error-message">
-            {{ message }}
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <!-- Display a success message if registration is successful -->
+        <div *ngIf="successMessage" class="success-message">
+            {{ successMessage }}
         </div>
     </form>
 </div>

@@ -16,6 +16,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(
     private router: Router,
@@ -37,6 +38,10 @@ The onLogin method handles the login process by checking form inputs, creating a
     const loginData = { username, password };
     console.log('loginData', loginData); // Used for log in troubleshooting. To be disabled for production.
 
+    // Reset both error and success messages
+    this.errorMessage = '';
+    this.successMessage = '';
+
     // Call the login method from the LoginService and subscribe to its response
     this.loginService.login(username, password).subscribe({
       next: (result: { id: number; username: string }) => {
@@ -44,7 +49,10 @@ The onLogin method handles the login process by checking form inputs, creating a
         if (result.username) {
           // If login is successful, set the user ID in AuthService and navigate to the dashboard page.
           this.authService.setUserId(result.id);
-          this.router.navigate(['/dashboard']);
+          this.successMessage = 'Login successful';
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+          }, 1000);
         } else {
           // If authentication failed, display an error message to the user.
           this.errorMessage = 'Login failed. Please check your credentials.';

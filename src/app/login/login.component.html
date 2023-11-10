@@ -36,5 +36,10 @@
         <div *ngIf="errorMessage" class="error-message">
             {{ errorMessage }}
         </div>
+
+        <!-- Display a success message if login is successful -->
+        <div *ngIf="successMessage" class="success-message">
+            {{ successMessage }}
+        </div>
     </form>
 </div>

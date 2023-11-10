@@ -27,12 +27,13 @@ h1 {
 
 /* Styling for input boxes */
 .input-box {
-    position: relative;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .input-box input {
-    width: 80%;
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -40,10 +41,6 @@ h1 {
 }
 
 .input-box i {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
     color: #ccc;
 }
 
@@ -78,9 +75,16 @@ h1 {
     text-decoration: underline;
 }
 
-/* Styling for error messages */
-.error-message {
-    color: #ff4f4f;
+/* Styling for messages */
+.error-message, .success-message {
     margin-top: 20px;
     font-weight: 600;
+}
+
+.error-message {
+    color: #ff4f4f;
+}
+
+.success-message {
+    color: #4CAF50;
 }

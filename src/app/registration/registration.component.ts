@@ -19,7 +19,8 @@ export class RegistrationComponent {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
-  message: string = '';
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -44,9 +45,10 @@ authService (currently disabled due to time constraints and troubleshooting) to 
 
     this.authService.register(user).subscribe({
       next: (response: any) => {
-        this.message = response.message;
+        this.errorMessage = response.errorMessage;
         if (response.success) {
           // Registration was successful, navigate to login page after a short delay
+          this.successMessage = 'Registration successful';
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 1000); // 1-second delay
@@ -54,7 +56,7 @@ authService (currently disabled due to time constraints and troubleshooting) to 
       },
       error: (error) => {
         console.error('Registration failed:', error);
-        this.message = 'Registration failed. Please try again later.';
+        this.errorMessage = 'Registration failed. Please try again later.';
       },
     });
   }

@@ -86,3 +86,10 @@ h1 {
     margin-top: 20px;
     font-weight: 600;
 }
+
+/* Styling for the success message */
+.success-message {
+    color: #4caf50;
+    margin-top: 20px;
+    font-weight: 600;
+}
