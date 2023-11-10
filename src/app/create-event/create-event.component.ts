@@ -1,4 +1,10 @@
+/* 
+The CreateEventComponent class is responsible for handling the creation of events.
+*/
+
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { EventService } from '../../Service/event.service';
 
 @Component({
@@ -7,7 +13,6 @@ import { EventService } from '../../Service/event.service';
   styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent {
-
   eventName: string = '';
   eventStartDate: string = '';
   eventDuration: number | null = null;
@@ -26,15 +31,19 @@ export class CreateEventComponent {
       description: this.eventDescription,
     };
 
-    // Handle form submission and send the data to the backend for event creation
-    this.eventService.createEvent(eventData).subscribe(
-      (response) => {
-        // Handle a successful event creation (e.g., display a success message or navigate to another page)
-      },
-      (error) => {
-        // Handle event creation error (e.g., display an error message)
-        this.errorMessage = 'Event creation failed. Please try again later.';
-      }
-    );
+    // Handle form submission and send the data to the backend for event creation.
+
+    this.eventService
+      .createEvent(eventData)
+      .pipe(
+        switchMap((response) => {
+          return of(response);
+        }),
+        catchError((error) => {
+          this.errorMessage = 'Event creation failed. Please try again later.';
+          return of(error);
+        })
+      )
+      .subscribe();
   }
 }
