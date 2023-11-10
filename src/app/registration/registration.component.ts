@@ -45,13 +45,15 @@ authService (currently disabled due to time constraints and troubleshooting) to 
 
     this.authService.register(user).subscribe({
       next: (response: any) => {
-        this.errorMessage = response.errorMessage; // This line may not be required.
-        if (response.success) {
+        console.log('Server response:', response); // Used for log in troubleshooting. To be disabled for production.
+        if (response.message === 'Registration successful') {
           // Registration was successful, navigate to login page after a short delay
           this.successMessage = 'Registration successful';
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 1000); // 1-second delay
+        } else {
+          this.errorMessage = response.message;
         }
       },
       error: (error) => {
