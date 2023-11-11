@@ -14,7 +14,6 @@
             <tr>
 
                 <!-- Define table column headers -->
-                <th>ID</th>
                 <th>Name</th>
                 <th>Start Date</th>
                 <th>Duration</th>
@@ -28,9 +27,6 @@
 
             <!-- Use ngFor to loop through 'events' and display data for each event -->
             <tr *ngFor="let event of events">
-
-                <!-- Display event ID -->
-                <td>{{ event.id }}</td>
 
                 <!-- Display event name -->
                 <td>{{ event.name }}</td>

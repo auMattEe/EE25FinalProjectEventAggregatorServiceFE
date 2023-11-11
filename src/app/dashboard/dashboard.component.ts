@@ -55,4 +55,9 @@ The ngOnInit method fetches the created and attending events for a user using th
       }
     );
   }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
