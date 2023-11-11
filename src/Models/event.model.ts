@@ -9,4 +9,5 @@ export interface Event {
   eventDuration: string;
   address: string;
   description: string;
+  attending?: boolean;
 }

@@ -51,4 +51,9 @@ button {
   button:hover {
     background: #005aa7;
   }
+
+  .attending {
+    background-color: green;
+    color: white;
+  }
   

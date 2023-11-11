@@ -47,4 +47,11 @@ The goToDashboard method navigates to the /dashboard page.
   public goToDashboard(): void {
     this.router.navigate(['/dashboard']);
   }
+
+  // Attend function
+  public attendEvent(event: Event): void {
+    // Add attend logic here.
+
+    event.attending = true;
+  }
 }

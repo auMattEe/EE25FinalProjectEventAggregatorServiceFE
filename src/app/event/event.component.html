@@ -19,6 +19,7 @@
                 <th>Duration</th>
                 <th>Address</th>
                 <th>Description</th>
+                <th>Attend</th>
             </tr>
         </thead>
 
@@ -42,6 +43,16 @@
 
                 <!-- Display event description -->
                 <td>{{ event.description }}</td>
+
+                <td>
+                    <!-- Disable the button if already attending -->
+                    <!-- Apply green-button class if attending -->
+                    <button [disabled]="event.attending" 
+                        [ngClass]="{'green-button': event.attending}" 
+                        (click)="attendEvent(event)">
+                        {{ event.attending ? 'Attending' : 'Attend' }}
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -59,3 +70,4 @@
     <!-- Add a button to return to the dashboard page -->
     <button (click)="goToDashboard()">Go to Dashboard</button>
 </div>
+}
