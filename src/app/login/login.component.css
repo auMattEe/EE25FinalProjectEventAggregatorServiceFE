@@ -30,18 +30,29 @@ h1 {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    position: relative;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 .input-box input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 40px;
     outline: none;
 }
 
 .input-box i {
     color: #ccc;
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    transform: translate(-50%);
+    font-size: 20px;
 }
 
 /* Styling for the Login button */
@@ -50,10 +61,13 @@ h1 {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 40px;
     cursor: pointer;
     font-weight: 600;
     transition: background 0.3s;
+    width: 100%;
+    height: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 }
 
 /* Slightly darker blue on hover */
@@ -76,7 +90,8 @@ h1 {
 }
 
 /* Styling for messages */
-.error-message, .success-message {
+.error-message,
+.success-message {
     margin-top: 20px;
     font-weight: 600;
 }
